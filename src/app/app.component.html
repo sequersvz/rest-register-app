@@ -1,6 +1,72 @@
 
+    <nz-alert
+    nzType="warning"
+    nzCloseable
+    nzMessage="Warning Text Warning Text Warning Text Warning Text Warning Text Warning Text Warning Text"
+  >
+  </nz-alert>
   <nz-content>
-    <div nz-row nzType="flex" nzJustify="center">
-      <div>preparing this shitt</div>
+    <div nz-row>
+      <div nz-col [nzXs]="{span: 12, offset: 6}" class="col-container">
+        <h4>Nombre del restaurant</h4>
+        <div class="input-container">
+          <input nz-input placeholder="default size" nzSize="default" />
+          <button nz-button nzType="primary" nzSize="default" nzShape="round">
+            Info
+          </button>
+        </div>
+      </div>
+      <div nz-col [nzXs]="{span: 12, offset: 6}" class="col-container">
+        <h4>Descripcion</h4>
+        <div class="input-container">
+          <input nz-input placeholder="default size" nzSize="default" />
+          <button nz-button nzType="primary" nzSize="default" nzShape="round">
+            Info
+          </button>
+        </div>
+      </div>
+      <div nz-col [nzXs]="{span: 12, offset: 6}" class="col-container">
+        <h4>Categoria</h4>
+        <div class="input-container">
+          <input nz-input placeholder="default size" nzSize="default" />
+          <button nz-button nzType="primary" nzSize="default" nzShape="round">
+            Info
+          </button>
+        </div>
+      </div>
+      <div nz-col [nzXs]="{span: 12, offset: 6}" class="col-container">
+        <h4>Etiquetas</h4>
+        <div class="input-container">
+          <input nz-input placeholder="default size" nzSize="default" />
+          <button nz-button nzType="primary" nzSize="default" nzShape="round">
+            Info
+          </button>
+        </div>
+      </div>
+      <div nz-col [nzXs]="{span: 11, offset: 6}" class="col-container">
+        <h4>Ubicacion</h4>
+        <div class="ubication-container">
+          <button nz-button nzType="primary" 
+          >
+          Utilizar ubicacion actual
+        </button>
+        <h4>O</h4>
+        <button nz-button 
+        nzType="primary" 
+        >
+        Ingresar manualmente
+      </button>
+        </div>
+      </div>
+      <div nz-col [nzXs]="{span: 11, offset: 6}" class="col-container">
+        <h4>Es esta tu ubicacion actual? Si no lo es, coloca un marcador sobre ella dejando presionada la ubicacion correspondiente</h4>
+      </div>
     </div>
   </nz-content>
+
+
+  <!-- <button nz-button 
+  nzType="primary" 
+  (click)="loadOne()" [nzLoading]="isLoadingOne">
+  Ingresar manualmente
+</button> -->
