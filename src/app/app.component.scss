@@ -1,4 +1,10 @@
+.container {
+  padding-right: 5%;
+  padding-left: 5%;
+}
+
 .input-container {
+
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -18,6 +24,37 @@
 
 .ubication-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
   margin-top: 20px;
+
+  & h4 {
+    margin-top: 5px;
+  }
+}
+
+.map-container {
+  height: 300px;
+  width: 100%;
+
+  &.no-display {
+    display: none;
+  }
+}
+
+.title-align-center {
+  text-align: center;
+}
+
+.submit-container {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    padding-right: 15%;
+    padding-left: 15%;
+  }
 }
