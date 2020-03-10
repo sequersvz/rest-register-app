@@ -15,7 +15,7 @@ export class MapService {
     this.mapbox.accessToken = environment.mapBoxToken;
   }
 
-  private _addDraggableMarker(lat, lng): void {
+  private _addDraggableMarker(lat: number, lng: number): void {
     this.marker = new mapboxgl.Marker({draggable: true}).setLngLat([lng, lat]).addTo(this.map);
   }
 
@@ -28,7 +28,6 @@ export class MapService {
     });
     this.map.addControl(new mapboxgl.NavigationControl());
     this._addDraggableMarker(lat, lng);
-    this.map.on('load', () => console.log('ddd'));
   }
 
   public initMap(coords: Coordinates): void {

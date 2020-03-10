@@ -1,6 +1,6 @@
 import { FormValues } from './app.model';
 
-export function convertToArray(stringToArray, separator) {
+export function convertToArray(stringToArray, separator: string) {
     if (stringToArray) {
         const array = stringToArray.split(separator);
 
@@ -12,14 +12,18 @@ export function convertToArray(stringToArray, separator) {
     return null;
 }
 
-export function sanitizeVal(obj) {
-    const newObj = {};
+export function sanitizeValForAPI(obj: FormValues) {
+    const newObj: {[key: string]: any} = {};
 
     Object.keys(obj).forEach(e => {
-        if (obj[e].length > 0) {
+        if (obj[e] !== null && obj[e].length > 0 && e !== 'Direction' && e !== undefined) {
             newObj[e] = obj[e];
         }
     });
+
+    newObj.Ubication = {
+        Direction: obj.Direction
+    };
 
     return newObj;
 }

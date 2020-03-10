@@ -3,37 +3,74 @@
   <nz-alert
   nzType="warning"
   nzCloseable
-  nzMessage="Warning Text Warning Text Warning Text Warning Text Warning Text Warning Text Warning Text"
+  nzMessage="Importante: Debes pulsar sobre el boton de instrucciones y leerlas para habilitar el formulario"
   >
   </nz-alert>
+  <div nz-row nzType="flex" nzJustify="center" class="margin-spacing">
+    <button nz-button nzType="primary" type="button" (click)="infoModal()">Instrucciones</button>
+  </div>
   <nz-content>
     <form (ngSubmit)="onSubmit(form)" #form="ngForm">
     <div nz-row>
       <div nz-col [nzXs]="24" class="col-container">
-        <h4>Nombre del restaurant</h4>
-          <input name="title" ngModel nz-input placeholder="Charlotte Sweet and Coffe" nzSize="default" />
+        <h4>Nombre del restaurante</h4>
+          <input 
+          required
+          name="Name" 
+          #NameInput="ngModel"
+          ngModel 
+          nz-input 
+          placeholder="Charlotte Sweet and Coffe" 
+          nzSize="default"
+          [disabled]="!infoOpened"
+          />
       </div>
       <div nz-col [nzXs]="24" class="col-container">
         <h4>Descripcion</h4>
 
-          <input name="description" ngModel nz-input placeholder="Pequeña descripcion del local" nzSize="default" />
+          <input 
+          name="Description" 
+          ngModel 
+          nz-input 
+          placeholder="Pequeña descripcion del local" 
+          nzSize="default" 
+          [disabled]="!infoOpened"
+          />
 
       </div>
       <div nz-col [nzXs]="24" class="col-container">
-        <h4>Categoria</h4>
-          <input name="categories" ngModel nz-input placeholder="Categorias separadas por comas" nzSize="default" />
+        <h4>Categorias</h4>
+          <input 
+          name="Categories" 
+          ngModel 
+          nz-input 
+          placeholder="Categorias separadas por comas" 
+          nzSize="default" 
+          [disabled]="!infoOpened"
+          />
       </div>
       <div nz-col [nzXs]="24" class="col-container">
         <h4>Etiquetas</h4>
-          <input name="tags" ngModel nz-input placeholder="Etiquetas separadas por comas" nzSize="default" />
+          <input 
+          name="Tags" 
+          ngModel 
+          nz-input 
+          placeholder="Etiquetas separadas por comas" 
+          nzSize="default" 
+          [disabled]="!infoOpened"
+          />
       </div>
       <div nz-col [nzXs]="24" class="col-container">
         <h3 class="title-align-center">Ubicacion</h3>
         <div class="ubication-container">
-          <button type="button" nz-button nzType="primary" 
-          (click)="loadActualUbication()" [nzLoading]="loadingMap"
+          <button 
+          type="button" 
+          nz-button nzType="primary" 
+          (click)="loadActualUbication()" 
+          [nzLoading]="loadingMap"
+          [disabled]="!infoOpened"
           >
-          Utilizar ubicacion actual
+          Ubicacion por GPS
         </button>
         <h4>O</h4>
         <button 
@@ -41,6 +78,7 @@
         nz-button 
         nzType="primary" 
         (click)="addManualUbication()"
+        [disabled]="!infoOpened"
         >
         Ingresar manualmente
       </button>
@@ -48,25 +86,40 @@
       </div>
       <div nz-col [nzXs]="{span: 18, offset: 3}" [nzMd]="{span: 14, offset: 5}" class="col-container" *ngIf="manualUbication && !mapsUbication">
         <div class="input-container">
-          <input name="manUbication" ngModel nz-input placeholder="Si es posible añadir un punto de referencia" nzSize="default" />
+          <input 
+          name="Direction" 
+          ngModel 
+          nz-input 
+          placeholder="Añadir un punto de referencia" 
+          nzSize="default" 
+          [disabled]="!infoOpened"
+          />
         </div>
       </div>
-      <div nz-col [nzXs]="{span: 12, offset: 6}" class="col-container" *ngIf="mapsUbication">
-        <h4>Es esta tu ubicacion actual? Si no lo es, coloca un marcador sobre ella dejando presionada la ubicacion correspondiente</h4>
+      <div nz-col [nzXs]="24" class="col-container" *ngIf="mapsUbication">
+        <h4>Arrastra el marcador a la ubicacion exacta del local</h4>
       </div>
     </div>
     <div class="map-container"  id="Map" [ngClass]="{'no-display': !mapsUbication}"></div>
-    <div nz-row nzType="flex" nzJustify="center" class="submit-container">
-      <button nz-button nzType="primary" type="submit">Click me!</button>
+    <div nz-row nzType="flex" nzJustify="center" class="margin-spacing">
+      <button 
+      nz-button 
+      nzType="primary" 
+      type="submit" 
+      [nzLoading]="isSendingForm"
+      [disabled]="!infoOpened || NameInput.errors"
+      >Enviar datos</button>
     </div>
   </form>
   </nz-content>
 </div>
-
-
-
-  <!-- <button nz-button 
-  nzType="primary" 
-  (click)="loadOne()" [nzLoading]="isLoadingOne">
-  Ingresar manualmente
-</button> -->
+<ng-template #notificationSuccess>
+  <div class="ant-notification-notice-content">
+    <div class="ant-notification-notice-with-icon">
+      <div class="ant-notification-notice-message">Gracias por participar</div>
+      <div class="ant-notification-notice-description">
+        Sientete libre de enviar todo el feedback posible
+      </div>
+    </div>
+  </div>
+</ng-template>

@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "rest-app-reg"
+  },
+  "targets": {
+    "rest-app-reg": {
+      "hosting": {
+        "rest-register-app": [
+          "rest-app-reg"
+        ]
+      }
+    }
   }
 }
